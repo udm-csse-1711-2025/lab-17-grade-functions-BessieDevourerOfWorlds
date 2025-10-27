@@ -2,7 +2,7 @@
 // Gets three exam scores from the user and shows them 
 // their letter grades
 // Started by: Caitlin Snyder
-// Edited by: [NAME HERE]
+// Edited by: Nathaniel Paulik
 
 #include <iostream>
 using namespace std;
@@ -12,14 +12,32 @@ using namespace std;
  *  Purpose: Ask the user for a test score, validate the input,
  *          and return the valid score.
  *  Parameters: None
- *  Return Value: A double representing a valid test score (0–100)
+ *  Return Value: A double representing a valid test score (0ï¿½100)
  ****************************************************************/
 
 // [TO DO: ADD getScore function HERE]
     // Ask the user for a score and validate input.
     // Keep asking until the score is between 0 and 100.
     // Return the valid score.
+double getScore() {
+//Initialzing a temp variable for score
+    int score;
 
+//User prompt for inputting score
+    cout << endl << "Score: ";
+    cin >> score;
+
+//Creating while loop for score input validation
+    while((score < 0) || (score > 100)) {
+        cout << endl << "Error! Invalid score input. Please enter a number between 0 - 100!";
+        cout << endl << endl << "Score: ";
+
+        cin >> score;
+    }
+
+//Returning value of score to main program
+    return score;
+}
 
 
 
@@ -28,19 +46,32 @@ using namespace std;
  * Function Name: displayLetterGrade
  * Purpose: Determine and display the letter grade 
  *          corresponding to the numeric score.
- * Parameters: score (double) – the numeric test score
+ * Parameters: score (double) ï¿½ the numeric test score
  * Return Value: None (displays the letter grade to the screen)
  ****************************************************************/
 
-// [TO DO : ADD getScore function HERE]
+// [TO DO : ADD *displayLetterGrade* function HERE]
     // Determine the letter grade and display it.
     // Example grading scale:
-    // 90–100: A
-    // 80–89:  B
-    // 70–79:  C
-    // 60–69:  D
+    // 90ï¿½100: A
+    // 80ï¿½89:  B
+    // 70ï¿½79:  C
+    // 60ï¿½69:  D
     // Below 60: F
-
+void displayLetterGrade(int score) {
+//Creating if else categorization menu for grading scale 
+    if(score >= 90) {
+        cout << "A";
+    } else if ((score <= 89) && (score >= 80)) {
+        cout << "B";
+    } else if ((score <= 79) && (score >= 70)) {
+        cout << "C";
+    } else if ((score <= 69) && (score >= 60)) {
+        cout << "D";
+    } else if (score < 60) {
+        cout << "F";
+    }
+}
 
 
 // You should not need to edit main for your program to run 
@@ -61,10 +92,10 @@ int main() {
     cout << "Exam 1: ";
     displayLetterGrade(score1);
 
-    cout << "Exam 2: ";
+    cout << endl << "Exam 2: ";     //Added endl for new lines between test scores for cleaner output
     displayLetterGrade(score2);
 
-    cout << "Exam 3: ";
+    cout << endl << "Exam 3: ";
     displayLetterGrade(score3);
 
     return 0;
